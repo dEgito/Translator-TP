@@ -95,10 +95,10 @@ export const Box = styled.div`
 export const Title = styled.h2`
   font-family: "Lato", sans-serif;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 600;
   font-size: 1rem;
   line-height: 1.2rem;
-
+  text-transform: uppercase;
   margin: 0;
 `;
 

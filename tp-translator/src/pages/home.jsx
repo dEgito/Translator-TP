@@ -1,5 +1,3 @@
-import {img} from '../assets/content-background.jpg'
-
 import { GithubLogo } from "@phosphor-icons/react";
 import { useState, useEffect } from "react";
 import {

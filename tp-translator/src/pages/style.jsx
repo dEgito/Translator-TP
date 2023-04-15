@@ -1,4 +1,4 @@
-import Background from "../assets/bb.png";
+import Background from "../assets/image.png";
 import BackgroungContent from "../assets/bg.png";
 
 import styled from "styled-components";
@@ -14,7 +14,7 @@ export const Container = styled.body`
 `;
 
 export const Navbar = styled.nav`
-  background: #021756;
+  background: #ba3a3a;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   color: #fff;
   padding: 0.5rem 2rem;

@@ -1,10 +1,10 @@
 // import CopyToClipboard from 'react-copy-to-clipboard';
 
+import Home from "./pages/home";
+
 function App() {
   return (
-    <div className="App">
-      <h1>TP TRANSLATOR</h1>
-    </div>
+    <Home />
   );
 }
 

@@ -3,7 +3,7 @@
 function App() {
   return (
     <div className="App">
-      <p>TP-TRANSLATOR</p>
+      <h1>TP TRANSLATOR</h1>
     </div>
   );
 }

@@ -11,7 +11,7 @@ export const Container = styled.body`
   background-image: url(${Background});
   background-position: center;
   background-attachment: fixed;
-  background-repeat: repeat-y;
+  background-repeat: repeat;
 `;
 
 export const Navbar = styled.nav`

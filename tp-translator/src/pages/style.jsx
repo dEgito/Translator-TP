@@ -24,6 +24,7 @@ export const Navbar = styled.nav`
   font-style: normal;
   font-weight: 400;
   font-size: 1rem;
+  letter-spacing: 4px;
   line-height: 18px;
 
   display: flex;
@@ -110,9 +111,10 @@ export const Textarea = styled.textarea`
   margin-bottom: 10px;
   border-radius: 5px;
   border: none;
-  resize: vertical;
+  resize: none;
   outline: none;
 
+  text-transform: uppercase;
   font-family: "Montserrat", sans-serif;
   font-style: normal;
   font-weight: 400;
@@ -144,6 +146,7 @@ export const Button = styled.button`
   width: 12rem;
   padding: 0.8rem 1rem;
   border-radius: 4px;
+  font-weight: 700;
   cursor: pointer;
 
   color: ${(props) => {
@@ -152,6 +155,9 @@ export const Button = styled.button`
         return "#FFFFFF";
 
       case "secundary":
+        return "#EB8B57";
+
+      case "terciary":
         return "#EB8B57";
 
       default:
@@ -167,6 +173,9 @@ export const Button = styled.button`
       case "secundary":
         return "1px solid #EB8B57";
 
+      case "terciary":
+        return "1px solid #EB8B57";
+
       default:
         return "none";
     }
@@ -178,6 +187,9 @@ export const Button = styled.button`
         return "#ef4b4b";
 
       case "secundary":
+        return "#ffddca";
+
+      case "terciary":
         return "#FEF3ED";
 
       default:
@@ -192,7 +204,10 @@ export const Button = styled.button`
           return "#DE6B6B";
 
         case "secundary":
-          return "#ffddca";
+          return "#fef3ed";
+
+        case "terciary":
+          return "#fff";
 
         default:
           return "#DE6B6B";

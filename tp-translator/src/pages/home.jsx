@@ -1,5 +1,5 @@
 import { GithubLogo } from "@phosphor-icons/react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import {
   Container,
   Navbar,
@@ -12,107 +12,105 @@ import {
   Div,
 } from "./style";
 
-export default function Home() {
-  const [entrada, setInput] = useState("");
-  const [saida, setOutput] = useState("");
+function Home() {
+  const [inputText, setInputText] = useState("");
+  const [outputText, setOutputText] = useState("");
 
-  const handleTranslate = () => {
-    const input = document.getElementById("input").value; //pegar o input
-    let output = "";
-
-    // setInput(event.target.value)
-
-    for (let i = 0; i < input.length; i++) {
-      const char = input.charAt(i);
-      let translatedChar = char;
-
-      switch (char.toUpperCase()) {
-        // ## T para P
-        case "T":
-          translatedChar = "P";
-          break;
-        case "E":
-          translatedChar = "O";
-          break;
-        case "N":
-          translatedChar = "L";
-          break;
-        case "I":
-          translatedChar = "A";
-          break;
-        case "S":
-          translatedChar = "R";
-          break;
-
-        //## P para T
-        case "P":
-          translatedChar = "T";
-          break;
-        case "O":
-          translatedChar = "E";
-          break;
-        case "L":
-          translatedChar = "N";
-          break;
-        case "A":
-          translatedChar = "I";
-          break;
-        case "R":
-          translatedChar = "S";
-          break;
-
-        // ## CASOS ESPECIAIS
-        // # AGUDO
-        case "Á":
-          translatedChar = "Í";
-          break;
-        case "É":
-          translatedChar = "Ó";
-          break;
-        case "Í":
-          translatedChar = "Á";
-          break;
-        case "Ó":
-          translatedChar = "É";
-          break;
-
-        // # CIRCUNFLEXO
-        case "Â":
-          translatedChar = "Î";
-          break;
-        case "Ê":
-          translatedChar = "Ô";
-          break;
-        case "Î":
-          translatedChar = "Â";
-          break;
-        case "Ô":
-          translatedChar = "Ê";
-          break;
-
-        // # TIL
-        // - Não existe acentuação com til para as letras E e I
-        // - Por este motivo não será possível retornar o Ã e Õ
-        case "Ã":
-          translatedChar = "I";
-          break;
-        case "Õ":
-          translatedChar = "E";
-          break;
-        case "Ñ":
-          translatedChar = "L";
-          break;
-      }
-
-      output += translatedChar;
-    }
-
-    document.getElementById("output").textContent = output; //setar na texte area
+  const handleInputChange = (event) => {
+    setInputText(event.target.value);
   };
 
-  const handleClean = () => {
-    setInput("");
-    setOutput("");
+  const handleTranslateClick = () => {
+    let translatedText = "";
+    for (let i = 0; i < inputText.length; i++) {
+      const char = inputText.charAt(i);
+      switch (char.toLowerCase()) {
+        case "t":
+          translatedText += "p";
+          break;
+        case "e":
+          translatedText += "o";
+          break;
+        case "n":
+          translatedText += "l";
+          break;
+        case "i":
+          translatedText += "a";
+          break;
+        case "s":
+          translatedText += "r";
+          break;
+
+        // polar to tenis
+        case "p":
+          translatedText += "t";
+          break;
+        case "o":
+          translatedText += "e";
+          break;
+        case "l":
+          translatedText += "n";
+          break;
+        case "a":
+          translatedText += "i";
+          break;
+        case "r":
+          translatedText += "s";
+          break;
+
+        // acentuações
+        case "ã":
+          translatedText += "i";
+          break;
+        case "õ":
+          translatedText += "e";
+          break;
+        case "â":
+          translatedText += "î";
+          break;
+        case "ñ":
+          translatedText += "l";
+          break;
+
+        case "ô":
+          translatedText += "ê";
+          break;
+        case "ê":
+          translatedText += "ô";
+          break;
+        case "î":
+          translatedText += "â";
+          break;
+
+        case "á":
+          translatedText += "í";
+          break;
+        case "í":
+          translatedText += "á";
+          break;
+        case "ó":
+          translatedText += "é";
+          break;
+        case "é":
+          translatedText += "ó";
+          break;
+        default:
+          translatedText += char;
+      }
+    }
+    setOutputText(translatedText);
+  };
+
+  const handleClearClick = () => {
+    setInputText("");
+    setOutputText("");
+  };
+
+  const handleCopyClick = (event) => {
+    const target = event.target.getAttribute("data-target");
+    const textBox = document.querySelector(`#${target}`);
+    textBox.select();
+    document.execCommand("copy");
   };
 
   return (
@@ -130,34 +128,44 @@ export default function Home() {
           <Box>
             <Title>Entrada</Title>
             <Textarea
-              value={entrada}
-              onChange={(e) => setInput(e.target.value)}
+              id="input"
+              value={inputText}
+              onChange={handleInputChange}
             />
           </Box>
           <Box>
             <Title>Saída</Title>
-            <Textarea
-              value={saida}
-              onChange={(e) => setOutput(e.target.value)}
-            />
+            <Textarea id="output" value={outputText} readOnly />
           </Box>
-      
         </Div>
 
         <div
-        style={{ display: "flex", justifyContent: "center", marginTop: "20px" }}
-      >
-        <ButtonGroup>
-          <Button type="primery" onClick={handleTranslate}>
-            Traduzir
-          </Button>
-          <Button type="secundary" onClick={handleClean}>
-            Limpar
-          </Button>
-        </ButtonGroup>
-      </div>
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            marginTop: "20px",
+          }}
+        >
+          <ButtonGroup>
+            <Button type="primery" onClick={handleTranslateClick}>
+              Traduzir
+            </Button>
+
+            <Button
+              type="secundary"
+              onClick={handleCopyClick}
+              data-target="output"
+            >
+              Copiar
+            </Button>
+
+            <Button type="terciary" onClick={handleClearClick}>
+              Limpar
+            </Button>
+          </ButtonGroup>
+        </div>
       </Content>
-      
     </Container>
   );
 }
+export default Home;

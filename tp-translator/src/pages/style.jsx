@@ -63,7 +63,7 @@ export const Content = styled.div`
     max-width: 40rem;
   }
 
-  @media (max-width: 400px) {
+  @media (max-width: 500px) {
     max-width: 20rem;
   }
 `;
@@ -74,7 +74,7 @@ export const Div = styled.div`
   flex-direction: row;
   align-items: center;
 
-  @media (max-width: 400px) {
+  @media (max-width: 800px) {
     flex-direction: column;
   }
 `;
@@ -88,7 +88,7 @@ export const Box = styled.div`
   gap: 16px;
   border-radius: 0.5rem;
 
-  @media (max-width: 400px) {
+  @media (max-width: 500px) {
     padding: 0.5rem;
   }
 `;
@@ -137,7 +137,7 @@ export const ButtonGroup = styled.div`
   justify-content: center;
   gap: 1rem;
 
-  @media (max-width: 400px) {
+  @media (max-width: 800px) {
     flex-direction: column;
   }
 `;
